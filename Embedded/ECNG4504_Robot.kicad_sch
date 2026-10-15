@@ -1,0 +1,2709 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "309ab9c7-0978-4a8a-8edd-c58da8d9078e")
+	(paper "A4")
+	(title_block
+		(title "ECNG 4504 - Phase 0 ")
+		(rev "1.0")
+		(company "Team 4")
+		(comment 1 "Malak Mekky / Malak Taha / Jannah Hela")
+	)
+	(lib_symbols
+		(symbol "Driver_Motor:L298N"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U5"
+				(at 4.6833 20.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "L298N"
+				(at 4.6833 17.78 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_THT:TO-220-15_P2.54x5.08mm_StaggerOdd_Lead4.58mm_Vertical"
+				(at 1.27 -16.51 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00000240.pdf"
+				(at 3.81 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Dual full bridge motor driver, up to 46V, 4A, Multiwatt15-V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "H-bridge motor driver"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO?220*StaggerOdd*Vertical*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "L298N_0_1"
+				(rectangle
+					(start -12.7 15.24)
+					(end 12.7 -15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "L298N_1_1"
+				(pin input line
+					(at -15.24 12.7 0)
+					(length 2.54)
+					(name "IN1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -15.24 10.16 0)
+					(length 2.54)
+					(name "IN2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -15.24 7.62 0)
+					(length 2.54)
+					(name "EnA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -15.24 2.54 0)
+					(length 2.54)
+					(name "IN3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -15.24 0 0)
+					(length 2.54)
+					(name "IN4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -15.24 -2.54 0)
+					(length 2.54)
+					(name "EnB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 17.78 270)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -17.78 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 5.08 180)
+					(length 2.54)
+					(name "OUT1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 2.54 180)
+					(length 2.54)
+					(name "OUT2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 -2.54 180)
+					(length 2.54)
+					(name "OUT3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 -5.08 180)
+					(length 2.54)
+					(name "OUT4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ECNG4504_Robot:Arduino_Mega_2560"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U1"
+				(at -15.24 22.86 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Arduino Mega 2560"
+				(at -15.24 20.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Arduino_Mega_2560_0_1"
+				(rectangle
+					(start -15.24 17.78)
+					(end 15.24 -17.78)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Arduino_Mega_2560_1_1"
+				(text "Arduino\nATmega2560"
+					(at 0 6.35 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(text "simplified"
+					(at 0 1.524 0)
+					(effects
+						(font
+							(size 1 1)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -20.32 12.7 0)
+					(length 5.08)
+					(name "D8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -20.32 10.16 0)
+					(length 5.08)
+					(name "D9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -20.32 7.62 0)
+					(length 5.08)
+					(name "D10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -20.32 5.08 0)
+					(length 5.08)
+					(name "D11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -20.32 2.54 0)
+					(length 5.08)
+					(name "D12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -20.32 0 0)
+					(length 5.08)
+					(name "D13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -7.62 -22.86 90)
+					(length 5.08)
+					(name "VIN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 0 -22.86 90)
+					(length 5.08)
+					(name "5V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 7.62 -22.86 90)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 20.32 12.7 180)
+					(length 5.08)
+					(name "D5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 20.32 10.16 180)
+					(length 5.08)
+					(name "D22"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 20.32 7.62 180)
+					(length 5.08)
+					(name "D23"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 20.32 5.08 180)
+					(length 5.08)
+					(name "D6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 20.32 2.54 180)
+					(length 5.08)
+					(name "D24"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 20.32 0 180)
+					(length 5.08)
+					(name "D25"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ECNG4504_Robot:Battery_3S_18650"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "BT"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "3x18650 (3S)"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Battery_3S_18650_0_1"
+				(rectangle
+					(start -8.89 5.08)
+					(end 8.89 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(text "3S 18650"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 1 1)
+						)
+					)
+				)
+			)
+			(symbol "Battery_3S_18650_1_1"
+				(pin power_out line
+					(at 0 10.16 270)
+					(length 5.08)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 0 -10.16 90)
+					(length 5.08)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ECNG4504_Robot:HW-871_LineSensor"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "HW-871"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "HW-871_LineSensor_0_1"
+				(rectangle
+					(start -10.16 15.24)
+					(end 10.16 -15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(text "5x TCRT5000"
+					(at -1 -3 0)
+					(effects
+						(font
+							(size 1 1)
+						)
+					)
+				)
+			)
+			(symbol "HW-871_LineSensor_1_1"
+				(pin power_in line
+					(at 0 20.32 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -20.32 90)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 12.7 180)
+					(length 5.08)
+					(name "OUT1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 10.16 180)
+					(length 5.08)
+					(name "OUT2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 7.62 180)
+					(length 5.08)
+					(name "OUT3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 5.08 180)
+					(length 5.08)
+					(name "OUT4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 15.24 2.54 180)
+					(length 5.08)
+					(name "OUT5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ECNG4504_Robot:Motor_DC_TT"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "M"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TT motor"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Motor_DC_TT_0_1"
+				(circle
+					(center 0 0)
+					(radius 5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "M"
+					(at 0 0 0)
+					(effects
+						(font
+							(size 2.54 2.54)
+						)
+					)
+				)
+			)
+			(symbol "Motor_DC_TT_1_1"
+				(pin passive line
+					(at 0 10.16 270)
+					(length 5.08)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -10.16 90)
+					(length 5.08)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(rectangle
+		(start 203.708 109.982)
+		(end 284.734 155.194)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 11aeadf0-0824-4cf4-b8ce-ea00cd4c6c6d)
+	)
+	(rectangle
+		(start 86.36 11.684)
+		(end 203.708 78.74)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 548ea979-e11f-4f21-a2c7-1f5b6528dcea)
+	)
+	(rectangle
+		(start 12.192 12.192)
+		(end 86.36 84.074)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 6ef53506-3b0a-40e6-800b-e53236076280)
+	)
+	(rectangle
+		(start 203.708 11.684)
+		(end 284.734 109.982)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid a69b9965-339c-44aa-9418-afa1dd642ff5)
+	)
+	(rectangle
+		(start 86.36 78.74)
+		(end 203.708 144.272)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid d1e69bb4-a2ee-46e6-8243-293446441a58)
+	)
+	(text "Sensor Connections\n"
+		(exclude_from_sim no)
+		(at 36.83 18.796 0)
+		(effects
+			(font
+				(size 3 3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "0a444659-0a78-49e6-b308-592ec8bf5e3f")
+	)
+	(text "Arduino Connections"
+		(exclude_from_sim no)
+		(at 90.678 141.224 0)
+		(effects
+			(font
+				(size 3 3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "43db87b2-f139-4698-a27a-8a5091c2aab4")
+	)
+	(text "H-Bridge Connections"
+		(exclude_from_sim no)
+		(at 90.932 20.066 0)
+		(effects
+			(font
+				(size 3 3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "8928b2c4-10b8-46ad-8506-ec811a9280db")
+	)
+	(text "Battery Pins\n"
+		(exclude_from_sim no)
+		(at 209.042 116.586 0)
+		(effects
+			(font
+				(size 3 3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "d5e34f35-4071-4518-9d1c-873db5b3beb5")
+	)
+	(text "Motor Connections\n"
+		(exclude_from_sim no)
+		(at 208.026 19.304 0)
+		(effects
+			(font
+				(size 3 3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "d7bb79b7-feb9-44f1-ba43-2dada02b6b49")
+	)
+	(junction
+		(at 229.87 55.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7ab808b0-2a43-47f2-a889-a2f6cd4997d3")
+	)
+	(junction
+		(at 229.87 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ebe4afd9-b047-445c-939e-ecde1d71538b")
+	)
+	(wire
+		(pts
+			(xy 170.18 48.26) (xy 165.1 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a8c9d70-25f7-4125-a889-d7951faf995b")
+	)
+	(wire
+		(pts
+			(xy 48.26 38.1) (xy 53.34 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c7afa0f-7f0b-4c5d-aa5e-b7c1c3fbda04")
+	)
+	(wire
+		(pts
+			(xy 149.86 67.31) (xy 149.86 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "125a2b3b-7be9-4a13-84c3-ab4186a9d94e")
+	)
+	(wire
+		(pts
+			(xy 229.87 55.88) (xy 237.49 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1658d6f9-5c00-430a-8162-8c421bc6cf26")
+	)
+	(wire
+		(pts
+			(xy 111.76 95.25) (xy 123.19 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "270471a7-c858-472c-808d-bbd68c5e6a98")
+	)
+	(wire
+		(pts
+			(xy 222.25 35.56) (xy 229.87 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "291fa59e-146e-4dc2-8bf4-e28b76bd7563")
+	)
+	(wire
+		(pts
+			(xy 33.02 71.12) (xy 33.02 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34acfcc6-3780-40cd-867f-e964fd25426b")
+	)
+	(wire
+		(pts
+			(xy 163.83 97.79) (xy 168.91 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a2ee420-9b12-4a97-aa8e-5aa89f80f92f")
+	)
+	(wire
+		(pts
+			(xy 170.18 43.18) (xy 165.1 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "43d9ea5d-04f8-401c-be64-583620a15bae")
+	)
+	(wire
+		(pts
+			(xy 240.03 143.51) (xy 240.03 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f58098a-926c-4b7e-9507-a7883748404a")
+	)
+	(wire
+		(pts
+			(xy 48.26 40.64) (xy 53.34 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58527e79-5ae8-46da-a250-c379375d6726")
+	)
+	(wire
+		(pts
+			(xy 151.13 128.27) (xy 151.13 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5cd97b30-d342-484c-b635-51bd447c5dc2")
+	)
+	(wire
+		(pts
+			(xy 135.89 128.27) (xy 135.89 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e8581c9-1b66-478b-9ed0-22b33770f324")
+	)
+	(wire
+		(pts
+			(xy 163.83 100.33) (xy 168.91 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6167c459-8ecc-49dc-a7d3-4399fa0c6342")
+	)
+	(wire
+		(pts
+			(xy 129.54 45.72) (xy 134.62 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "648a8229-b6c8-473d-8cbd-b396f339bc69")
+	)
+	(wire
+		(pts
+			(xy 33.02 30.48) (xy 33.02 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "66f71223-cbda-4179-96ce-d81414029e83")
+	)
+	(wire
+		(pts
+			(xy 111.76 97.79) (xy 123.19 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68e15417-d7f9-4c42-bbc7-538336eece08")
+	)
+	(wire
+		(pts
+			(xy 111.76 102.87) (xy 123.19 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f0160d5-6ec9-4506-992e-1b6a4151f113")
+	)
+	(wire
+		(pts
+			(xy 222.25 71.12) (xy 237.49 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74691657-3c69-4256-82a0-64ebf8c5e053")
+	)
+	(wire
+		(pts
+			(xy 129.54 38.1) (xy 134.62 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "763da98a-d973-49f5-b9b6-07d8fc8e1fbf")
+	)
+	(wire
+		(pts
+			(xy 111.76 100.33) (xy 123.19 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78e6789c-dec8-4076-9950-149bc7527517")
+	)
+	(wire
+		(pts
+			(xy 111.76 105.41) (xy 123.19 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7beb0358-5902-4c37-92c2-ba564c3e0f56")
+	)
+	(wire
+		(pts
+			(xy 163.83 92.71) (xy 168.91 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f2fc76e-3bd4-4e11-995c-7569548f6e82")
+	)
+	(wire
+		(pts
+			(xy 170.18 40.64) (xy 165.1 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83a1becf-f13e-4ebb-ad66-3ce93f75a0eb")
+	)
+	(wire
+		(pts
+			(xy 129.54 48.26) (xy 134.62 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "89ab33cf-c2c9-4a47-a87a-44adba7ee084")
+	)
+	(wire
+		(pts
+			(xy 129.54 43.18) (xy 134.62 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8be36ad9-1a8c-4fe5-ad3e-9e0cc413ee79")
+	)
+	(wire
+		(pts
+			(xy 129.54 33.02) (xy 134.62 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8bedb133-3eb0-4838-b857-d6da615e3e09")
+	)
+	(wire
+		(pts
+			(xy 111.76 92.71) (xy 123.19 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "93488456-13ff-4012-a690-b03e003ee375")
+	)
+	(wire
+		(pts
+			(xy 48.26 43.18) (xy 53.34 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "98825fe4-f008-4182-9830-43fffcaa3172")
+	)
+	(wire
+		(pts
+			(xy 163.83 102.87) (xy 168.91 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad71b9a1-6dbb-43b5-9362-971b271d8147")
+	)
+	(wire
+		(pts
+			(xy 143.51 128.27) (xy 143.51 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2ecf772-5162-4bc0-bdf1-bb22637c2ad5")
+	)
+	(wire
+		(pts
+			(xy 222.25 91.44) (xy 237.49 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c0f9d6fb-5452-496a-9b4f-e8ca382ad635")
+	)
+	(wire
+		(pts
+			(xy 149.86 25.4) (xy 149.86 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c2efc56a-ee51-48d4-bc6c-b9a4723dbec8")
+	)
+	(wire
+		(pts
+			(xy 163.83 95.25) (xy 168.91 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c33bdc04-9fe3-40bd-819a-dd31a6c7c4cb")
+	)
+	(wire
+		(pts
+			(xy 229.87 25.4) (xy 229.87 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf1fa4c8-ecc8-48a0-927b-ae5fa4ede3cf")
+	)
+	(wire
+		(pts
+			(xy 170.18 50.8) (xy 165.1 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d16a85a3-390b-49e7-82d7-1c79949704bf")
+	)
+	(wire
+		(pts
+			(xy 229.87 35.56) (xy 237.49 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df375bfa-b68f-45f0-8cee-e2676ca51d74")
+	)
+	(wire
+		(pts
+			(xy 129.54 35.56) (xy 134.62 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e0d7ece6-974b-49e1-bccc-9004b2c52e1d")
+	)
+	(wire
+		(pts
+			(xy 48.26 45.72) (xy 53.34 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e6d4fba5-dbde-48f7-bb08-154787a47ecf")
+	)
+	(wire
+		(pts
+			(xy 222.25 55.88) (xy 229.87 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e80183db-6a52-4604-a1e4-62f3512450c6")
+	)
+	(wire
+		(pts
+			(xy 229.87 55.88) (xy 229.87 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f33e1232-a6cc-4828-b348-6e1933c80b9a")
+	)
+	(wire
+		(pts
+			(xy 163.83 105.41) (xy 168.91 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc1fdd1a-bcbb-44f9-bb2c-dfda2f8559cb")
+	)
+	(wire
+		(pts
+			(xy 48.26 48.26) (xy 53.34 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fdc4e445-b656-45ed-bb38-40dee883957c")
+	)
+	(wire
+		(pts
+			(xy 240.03 121.92) (xy 240.03 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fffbc012-035c-4c45-bb95-84edbd243c37")
+	)
+	(label "ENB"
+		(at 168.91 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "13126dc8-ab31-4a91-8691-25bf406e51ae")
+	)
+	(label "ENA"
+		(at 168.91 92.71 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "16eeae36-6b37-4986-b0f6-8d2808f477f7")
+	)
+	(label "ENA"
+		(at 129.54 38.1 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "172668c6-881f-4833-a915-605c989373ea")
+	)
+	(label "IN1"
+		(at 129.54 33.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "205e471c-9a2d-47ba-aa28-754e6523b70a")
+	)
+	(label "MOTR_B"
+		(at 170.18 50.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2872380b-2afc-4eaa-b068-ec2ca14c7dd6")
+	)
+	(label "IN3"
+		(at 129.54 43.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "28f4b86c-1f72-4038-b401-01c05fab67f4")
+	)
+	(label "MOTR_B"
+		(at 224.79 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2dc93628-2056-420a-8a4d-97c50d88bb07")
+	)
+	(label "MOTL_B"
+		(at 170.18 43.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "342e4a8f-a102-46f2-817c-a9eb1f9459a1")
+	)
+	(label "+5V"
+		(at 33.02 25.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3919b26a-58de-4897-a2cb-12be7eb98a95")
+	)
+	(label "SENSOR_2"
+		(at 111.76 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3e746b3c-a97d-48e2-ba8b-336f268e1fbc")
+	)
+	(label "+5V"
+		(at 143.51 133.35 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "41cd7cde-fbe9-4ce4-be2e-809f70b74f2a")
+	)
+	(label "ENB"
+		(at 129.54 48.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "436573bb-3f3d-4df4-a264-02f3da1912d3")
+	)
+	(label "IN2"
+		(at 168.91 97.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "47b6bb2c-2504-45b2-8376-77bdb60d4277")
+	)
+	(label "GND"
+		(at 149.86 67.31 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4ca61f74-ff42-4171-97e7-6e1553f878ee")
+	)
+	(label "MOTL_A"
+		(at 229.87 25.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4dfd10f1-c4ab-4e15-839f-2ba571ab1875")
+	)
+	(label "SENSOR_3"
+		(at 53.34 43.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "50ade03c-a637-405e-a85e-549c8058dc9a")
+	)
+	(label "IN4"
+		(at 168.91 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "535d3eed-e6f0-499a-ad6d-4a2df4200f77")
+	)
+	(label "MOTR_A"
+		(at 170.18 48.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5e88d6da-a234-47f1-97b2-c2ad488d6c0b")
+	)
+	(label "SENSOR_3"
+		(at 111.76 97.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "67a77a88-6d15-4890-92a2-e107454a90a4")
+	)
+	(label "IN1"
+		(at 168.91 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7130c371-d4bd-4352-8433-c6f211f1e69b")
+	)
+	(label "MOTL_B"
+		(at 229.87 62.23 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7430f465-3afe-42df-ae44-97e726bcbda0")
+	)
+	(label "GND"
+		(at 151.13 133.35 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7c5d89cb-c2b7-4311-99e9-f11fa8439e15")
+	)
+	(label "SENSOR_1"
+		(at 111.76 92.71 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8d17cef6-b6da-4422-a701-823a6aebe881")
+	)
+	(label "SENSOR_5"
+		(at 53.34 48.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "91aae68c-052a-4dee-b054-a1ef550dc178")
+	)
+	(label "MOTL_A"
+		(at 170.18 40.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "91f6bf1b-7689-49ac-b5c2-f9c020b62979")
+	)
+	(label "VBAT"
+		(at 240.03 121.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "95302ac6-05bf-4f75-8ec9-ea1fd349a1c6")
+	)
+	(label "SENSOR_1"
+		(at 53.34 38.1 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a07857f7-916c-4b94-83e8-3c171010862a")
+	)
+	(label "IN2"
+		(at 129.54 35.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a9540fff-e5d3-4709-82c6-c421de904a6a")
+	)
+	(label "IN4"
+		(at 129.54 45.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "aa4679b6-34e9-4988-854f-a3b053a05f24")
+	)
+	(label "MOTR_A"
+		(at 224.79 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ae3f0716-8987-4521-8831-3700c72227ed")
+	)
+	(label "SENSOR_5"
+		(at 111.76 102.87 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b228a6ab-5e7f-48f6-b039-f6f09723986a")
+	)
+	(label "GND"
+		(at 33.02 76.2 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b5b0a5a3-39d6-47e7-b9b4-6a95bd42fe9e")
+	)
+	(label "SENSOR_2"
+		(at 53.34 40.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c0bdc675-aaf0-45d9-a9f3-a907c2d67ecd")
+	)
+	(label "VBAT"
+		(at 135.89 133.35 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c9b08b7e-6ee8-48d2-a5d5-550a39e693ee")
+	)
+	(label "SENSOR_4"
+		(at 111.76 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e1ab9315-d406-4c51-a6f8-14c111955982")
+	)
+	(label "VBAT"
+		(at 149.86 25.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e6569f4d-5523-4896-a740-097861a39dba")
+	)
+	(label "GND"
+		(at 240.03 148.59 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e6e2708f-9249-486b-bcee-0ebcf0ed31e9")
+	)
+	(label "LED_BUILTIN"
+		(at 111.76 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f14484f1-0046-4a2f-b89d-b387a6be30c1")
+	)
+	(label "IN3"
+		(at 168.91 102.87 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f16cf4ff-f04c-43ee-92e2-91fd2f2d4f8b")
+	)
+	(label "SENSOR_4"
+		(at 53.34 45.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ff52dfc9-387d-4ef6-b832-55ca5591e2ab")
+	)
+	(symbol
+		(lib_id "ECNG4504_Robot:Motor_DC_TT")
+		(at 237.49 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "61889c9e-fb03-43f3-9bc7-3e52472861d2")
+		(property "Reference" "M2"
+			(at 245.11 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TT motor (rear-left)"
+			(at 245.11 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 237.49 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 237.49 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 237.49 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "fbe070ff-8cb2-4fcc-8e5d-4a53e926a4cd")
+		)
+		(pin "2"
+			(uuid "16ce3af8-426f-4202-8097-7886c8cf5b6d")
+		)
+		(instances
+			(project "ECNG4504_Robot"
+				(path "/309ab9c7-0978-4a8a-8edd-c58da8d9078e"
+					(reference "M2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Driver_Motor:L298N")
+		(at 149.86 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6da1c7de-d2ed-4d3a-bfdd-76ad4ed89501")
+		(property "Reference" "U5"
+			(at 154.5433 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "L298N"
+			(at 154.5433 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-15_P2.54x5.08mm_StaggerOdd_Lead4.58mm_Vertical"
+			(at 151.13 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00000240.pdf"
+			(at 153.67 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Dual full bridge motor driver, up to 46V, 4A, Multiwatt15-V"
+			(at 149.86 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "5"
+			(uuid "68e3618b-4663-4d10-bb86-2ce8830f0766")
+		)
+		(pin "10"
+			(uuid "0ff1132b-c3eb-4f30-9a9a-aeb66969aba0")
+		)
+		(pin "4"
+			(uuid "bd956a57-6dbe-4776-a8f5-15046553a7ad")
+		)
+		(pin "6"
+			(uuid "bd7e234e-2582-432b-9f38-daf03f8d2f7b")
+		)
+		(pin "8"
+			(uuid "5cf7692d-0a5c-490c-b790-e4e595e98552")
+		)
+		(pin "7"
+			(uuid "0b9a2a6c-0fd2-4d80-bced-5074d005c35a")
+		)
+		(pin "9"
+			(uuid "f9b92388-e2a5-41bc-a88e-bdaa03525ce0")
+		)
+		(pin "1"
+			(uuid "f59e0f44-b165-4016-9f39-bd10f4dc67c4")
+		)
+		(pin "11"
+			(uuid "9f414c7d-4115-4ab3-aa56-627bbdc10a4a")
+		)
+		(pin "12"
+			(uuid "3c8569f0-d695-4630-a5a8-1afe01e352ab")
+		)
+		(pin "3"
+			(uuid "7e520248-e634-48f4-8bf8-f73b20999395")
+		)
+		(pin "2"
+			(uuid "614b8b7e-336b-4db5-b6ed-fea342cd6a81")
+		)
+		(instances
+			(project ""
+				(path "/309ab9c7-0978-4a8a-8edd-c58da8d9078e"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ECNG4504_Robot:HW-871_LineSensor")
+		(at 33.02 50.8 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "72f4d421-9944-4a76-b90f-2d226ecb0be5")
+		(property "Reference" "U3"
+			(at 22.86 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "HW-871"
+			(at 22.86 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 33.02 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 33.02 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 33.02 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "1e6d87ce-e53b-41f3-8609-1a8f42948cea")
+		)
+		(pin "4"
+			(uuid "fa82bf95-99cb-46bb-93ac-58fbfbbfbfeb")
+		)
+		(pin "5"
+			(uuid "f9bb6afd-dd2e-47bf-a9a4-b905b0b0bfac")
+		)
+		(pin "6"
+			(uuid "028cbf23-5c32-434f-8401-f697d0c25241")
+		)
+		(pin "7"
+			(uuid "cf39c0f0-4bd9-4e39-8990-b50ba72fbc3d")
+		)
+		(pin "1"
+			(uuid "c2a8ebaa-0850-4983-9a5e-b816887ec248")
+		)
+		(pin "2"
+			(uuid "1a485867-517e-4bbc-9a6b-05a94dc1961c")
+		)
+		(instances
+			(project "ECNG4504_Robot"
+				(path "/309ab9c7-0978-4a8a-8edd-c58da8d9078e"
+					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ECNG4504_Robot:Motor_DC_TT")
+		(at 222.25 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "73f7b87a-03d0-4e7a-a38c-c8fbd274f86f")
+		(property "Reference" "M1"
+			(at 214.63 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TT motor (front-left)"
+			(at 214.63 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 222.25 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 222.25 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 222.25 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "81b79739-e8a3-4d11-b236-952b312174d4")
+		)
+		(pin "2"
+			(uuid "03ee30ed-4dc8-4924-b413-0a49c6bdcd67")
+		)
+		(instances
+			(project "ECNG4504_Robot"
+				(path "/309ab9c7-0978-4a8a-8edd-c58da8d9078e"
+					(reference "M1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ECNG4504_Robot:Arduino_Mega_2560")
+		(at 143.51 105.41 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8cd4ef5d-da90-4f0b-9d40-b757d7de78f4")
+		(property "Reference" "U2"
+			(at 128.27 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Arduino Mega 2560"
+			(at 128.27 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 143.51 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 143.51 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 143.51 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a56089ee-92d4-40bc-b1de-86e60fd31d08")
+		)
+		(pin "2"
+			(uuid "12c7da3c-909b-43b2-b6df-770df7bf0a49")
+		)
+		(pin "3"
+			(uuid "3d847811-bf22-46f1-888f-ef1156f46699")
+		)
+		(pin "4"
+			(uuid "76d0ace3-9023-4e81-94a6-2f7b3174c119")
+		)
+		(pin "5"
+			(uuid "d1183a84-93be-409c-9a6c-4c29cf1e923c")
+		)
+		(pin "6"
+			(uuid "4efb3525-b237-4fd0-8d09-836ee97afc36")
+		)
+		(pin "7"
+			(uuid "13a44e29-85f6-40ae-a62a-8ca8177b78ef")
+		)
+		(pin "8"
+			(uuid "d9d430cd-5a87-4aa2-bfcc-af491ce1fea6")
+		)
+		(pin "9"
+			(uuid "b7d02fd6-fca6-46d8-88ab-ac4f626d072f")
+		)
+		(pin "10"
+			(uuid "324fc4cc-b37b-4f49-a9eb-1cbceba1d8a6")
+		)
+		(pin "11"
+			(uuid "b139169e-5294-4d2e-b087-c256c2dec590")
+		)
+		(pin "12"
+			(uuid "a2462847-a851-4084-8035-45357596441a")
+		)
+		(pin "13"
+			(uuid "d72a73b5-d1e4-4071-8e61-c0c30550bc88")
+		)
+		(pin "14"
+			(uuid "c8253e4d-7df4-4fe5-943c-ce29b17f5615")
+		)
+		(pin "15"
+			(uuid "e436c9dc-3d1a-4cde-b213-8895416521bf")
+		)
+		(instances
+			(project "ECNG4504_Robot"
+				(path "/309ab9c7-0978-4a8a-8edd-c58da8d9078e"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ECNG4504_Robot:Motor_DC_TT")
+		(at 222.25 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "93d8ce9c-4ccb-4f2d-b929-e57179053e7d")
+		(property "Reference" "M3"
+			(at 214.63 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TT motor (front-right)"
+			(at 214.63 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 222.25 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 222.25 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 222.25 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "08ed5127-7ed8-4027-9739-6c2ccd206a45")
+		)
+		(pin "2"
+			(uuid "3e791c28-17b1-4631-8828-d0753c108fff")
+		)
+		(instances
+			(project "ECNG4504_Robot"
+				(path "/309ab9c7-0978-4a8a-8edd-c58da8d9078e"
+					(reference "M3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ECNG4504_Robot:Motor_DC_TT")
+		(at 237.49 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c9462a52-87d7-4167-812f-dcd00a222298")
+		(property "Reference" "M4"
+			(at 245.11 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TT motor (rear-right)"
+			(at 245.11 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 237.49 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 237.49 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 237.49 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "61d69ed9-76d7-49e1-997a-20ec4f417b1a")
+		)
+		(pin "2"
+			(uuid "1597d2ff-b38a-4dc4-92be-5d6c2a68eaae")
+		)
+		(instances
+			(project "ECNG4504_Robot"
+				(path "/309ab9c7-0978-4a8a-8edd-c58da8d9078e"
+					(reference "M4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ECNG4504_Robot:Battery_3S_18650")
+		(at 240.03 133.35 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "da6238cc-6f69-4545-8482-bf1e616ce430")
+		(property "Reference" "BT1"
+			(at 252.73 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "3x 18650 in series"
+			(at 252.73 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 240.03 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 240.03 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 240.03 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1b814cdd-ac72-45c8-b8cd-015318624ed7")
+		)
+		(pin "2"
+			(uuid "949a69ab-944c-45b8-afff-383bcbffda61")
+		)
+		(instances
+			(project "ECNG4504_Robot"
+				(path "/309ab9c7-0978-4a8a-8edd-c58da8d9078e"
+					(reference "BT1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
