@@ -2,7 +2,7 @@
 Embedded project
 Malak Mekky
 Malak Taha
-Jannah Hela
+Jannah Hella
 */
 
 // h bridge bits
@@ -17,16 +17,19 @@ Jannah Hela
 const byte sensors[5] = {8,9,10,11,12};   
 
 // speeds
-const int normalSpeed = 95;
-const int turnSpeed = 90;
+const int normalSpeed = 120;
+const int turnSpeed = 110;        // was 90: spinning on the spot needs more torque (weaker battery stalled it)
 const int scanSpeed = 90;
+const int kickSpeed = 150;        // short burst at the start of a spin to break static friction
+const unsigned long kickTime = 40;
 
 // recovery speed
-const int searchSpeed = 80;
+const int searchSpeed = 100;      // was 80, same reason as turnSpeed
 const unsigned long lostTime = 120;
 const unsigned long maxSearchTime = 6000;
 const unsigned long alignTime = 30;
 const unsigned long turnProtectionTime = 350;
+const unsigned long retryAfter = 1500;   // after a failed search, wait this long then try again
 
 // turn 
 const unsigned long nodeTime = 130;
@@ -51,6 +54,7 @@ unsigned long lastTurnTime = 0;
 unsigned long lineLostTime = 0;
 unsigned long searchStartTime = 0;
 unsigned long centerStartTime = 0;
+unsigned long failedAt = 0;
 
 int lastTurnDirection = 1;
 
@@ -98,6 +102,11 @@ bool turn90(int direction) {
 
   stopCar();
   delay(60);
+
+  // short burst so the car actually starts rotating, then the normal turn speed
+  drive(direction * kickSpeed,
+       -direction * kickSpeed);
+  delay(kickTime);
 
   drive(direction * turnSpeed,
        -direction * turnSpeed);
@@ -149,6 +158,7 @@ void recoverLine() {
   if(!isSearching) {
 
     isSearching = true;
+    Serial.println("line lost -> searching");
     searchStartTime = millis();
     centerStartTime = 0;
     readyForNode = false;
@@ -173,6 +183,7 @@ void recoverLine() {
       centerStartTime = 0;
       lineLostTime = 0;
       lastNodeTime = millis();
+      Serial.println("line found");
 
       return;
     }
@@ -190,6 +201,8 @@ void recoverLine() {
     stopCar();
     isSearching = false;
     searchFailed = true;
+    failedAt = millis();
+    Serial.println("search failed -> will retry");
   }
 }
 
@@ -217,8 +230,16 @@ void setup() {
 
 void loop() {
 
+  // a failed search is not final: resume as soon as black is seen, or retry after a pause
   if(searchFailed) {
     stopCar();
+    if(readLine() != 0 || millis() - failedAt > retryAfter) {
+      searchFailed = false;
+      lineLostTime = 0;
+      readyForNode = false;
+      lastNodeTime = millis();
+      Serial.println("resuming");
+    }
     return;
   }
 
@@ -304,14 +325,21 @@ void loop() {
       else if(turnLeft)
         direction = -1;
 
+      Serial.print("node L=");
+      Serial.print(turnLeft);
+      Serial.print(" R=");
+      Serial.print(turnRight);
+      Serial.print(" -> ");
+      Serial.println(direction == 1 ? "RIGHT" : direction == -1 ? "LEFT" : "NONE");
+
       if(direction != 0) {
 
         lastTurnDirection = direction;
 
         if(!turn90(direction)) {
-          searchFailed = true;
+          // a failed turn is no longer fatal: carry on and let the lost-line search handle it
+          Serial.println("turn failed -> recovering");
           stopCar();
-          return;
         }
       }
 
