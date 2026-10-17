@@ -38,7 +38,7 @@ const unsigned long cooldownTime = 300;
 const unsigned long nodeConfirmTime = 15;
 
 // line following
-const float kp = 20.0;
+const float kp = 15.0;
 
 // state
 bool readyForNode = false;
