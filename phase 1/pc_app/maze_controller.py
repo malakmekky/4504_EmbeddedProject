@@ -14,6 +14,7 @@ Commands at the prompt:
     stop    stop the motors now
     path    ask the robot for the stored path
     status  ask the robot what it is doing
+    forget  erase the saved path + map (new maze, or starting from the other circle)
     quit    disconnect and exit
 """
 
@@ -43,6 +44,7 @@ COMMANDS = {
     "x": "STOP", "stop": "STOP",
     "p": "PATH", "path": "PATH",
     "?": "STATUS", "status": "STATUS",
+    "f": "FORGET", "forget": "FORGET",
 }
 
 
@@ -131,6 +133,12 @@ class RobotLink:
 
         elif word == "NODE":
             print(f"[{now()}] TRAINING  node {rest}")
+            # "NODE 7 (-1970,4686) exits=S END -> B ..." = the end circle, found for the first time
+            # ("END again" on later visits is not repeated)
+            if " END -> " in rest:
+                node_id, _, after = rest.partition(" ")
+                pos = after.split()[0].strip("()")
+                print(f"\n[{now()}] ************  END CIRCLE FOUND (node {node_id} at {pos})  ************\n")
 
         elif word == "MAP":
             self.handle_map(rest)
@@ -208,7 +216,7 @@ async def session(device, link):
     async with BleakClient(device, disconnected_callback=lambda _c: disconnected.set()) as client:
         print(f"Connected to {device.name} ({device.address})")
         await client.start_notify(STATUS_UUID, link.on_notify)
-        print("Commands: train | solve | stop | path | status | quit\n")
+        print("Commands: train | solve | stop | path | status | forget | quit\n")
 
         while not disconnected.is_set():
             prompt_task = asyncio.create_task(ainput())
@@ -231,7 +239,7 @@ async def session(device, link):
 
             cmd = COMMANDS.get(text)
             if cmd is None:
-                print("Unknown command. Use: train | solve | stop | path | status | quit")
+                print("Unknown command. Use: train | solve | stop | path | status | forget | quit")
                 continue
 
             await client.write_gatt_char(CMD_UUID, cmd.encode(), response=True)

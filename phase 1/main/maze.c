@@ -44,11 +44,6 @@ static int routePos = 0;
 
 static const char *arriveHow = "";    // printed with the decision
 static uint32_t driftMs = 0;          // distance driven since we last knew for sure where we are
-static bool atCircle = false;         // just arrived in the start or end circle
-static int dijkstraAvoid = -1;        // node the route must not drive through (the end circle on the way home)
-static char homePath[MAZE_MAX_MOVES + 1];   // moves to drive back to the start after training
-static int homeLen = 0;
-static int circleBack = 0;            // direction to leave that circle (back the way we came)
 
 static char rawPath[MAZE_MAX_MOVES + 1];
 static int rawLen = 0;
@@ -142,9 +137,6 @@ static void dijkstra(int src, uint32_t *dist, int16_t *prev) {
       break;
     done[u] = true;
 
-    if (u == dijkstraAvoid && u != src)
-      continue;                       // can arrive here, but not drive through it
-
     for (int d = 0; d < 4; d++) {
       int v = nodes[u].nbr[d];
       if (v >= 0 && dist[u] + nodes[u].len[d] < dist[v]) {
@@ -158,7 +150,7 @@ static void dijkstra(int src, uint32_t *dist, int16_t *prev) {
 // existing node ahead of us (direction h from prev) near (x, y), whose exit `back`
 // points at us and isn't explored yet. The allowed error grows with the distance
 // driven since the last node we were sure about.
-static int findMatch(int prev, int h, int32_t x, int32_t y, uint32_t segMs, uint8_t seen) {
+static int findMatch(int prev, int h, int32_t x, int32_t y, uint32_t segMs) {
 
   int back = opposite(h);
   int32_t tol = (int32_t)((driftMs + segMs) * MATCH_TOL_FRAC);
@@ -173,10 +165,6 @@ static int findMatch(int prev, int h, int32_t x, int32_t y, uint32_t segMs, uint
     node_t *n = &nodes[i];
     if (i == prev || n->circle) continue;
     if (!(n->exits >> back & 1) || n->nbr[back] >= 0) continue;
-
-    // it must also look like that node: the exits we see now may differ from the ones
-    // stored by at most one (a branch can be missed once), otherwise it's another node
-    if (__builtin_popcount((n->exits ^ seen) & 0x0F) > MATCH_EXIT_DIFF) continue;
 
     // must be in front of the car, not behind it
     int32_t ahead = (n->x - nodes[prev].x) * DX[h] + (n->y - nodes[prev].y) * DY[h];
@@ -193,26 +181,6 @@ static int findMatch(int prev, int h, int32_t x, int32_t y, uint32_t segMs, uint
   }
 
   return best;
-}
-
-// a circle reached through a new edge. The maze has only two circles (start and end),
-// so it is one of the circles we already know, never a third one:
-//   - end not found yet: it is the start again if we are near it, otherwise it is the end
-//   - end already found: whichever of the two is closer to where we think we are
-// returns 0 (start), goalNode, or -1 (a circle we haven't seen: the end)
-static int matchCircle(int32_t x, int32_t y, uint32_t segMs) {
-
-  int32_t ds = abs(x - nodes[0].x) + abs(y - nodes[0].y);
-
-  if (goalNode < 0) {
-    int32_t tol = (int32_t)((driftMs + segMs) * CIRCLE_TOL_FRAC);
-    if (tol < CIRCLE_TOL_MIN) tol = CIRCLE_TOL_MIN;
-    if (tol > CIRCLE_TOL_MAX) tol = CIRCLE_TOL_MAX;
-    return ds <= tol ? 0 : -1;
-  }
-
-  int32_t dg = abs(x - nodes[goalNode].x) + abs(y - nodes[goalNode].y);
-  return ds <= dg ? 0 : goalNode;
 }
 
 // leave the current node in absolute direction d
@@ -246,15 +214,31 @@ void maze_reset(void) {
   heading = 0;
   exploreDone = false;
   driftMs = 0;
-  atCircle = false;
   routeLen = 0;
   rawLen = 0;
   rawPath[0] = '\0';
   bestLen = 0;
   bestPath[0] = '\0';
   bestNodeCount = 0;
-  homeLen = 0;
-  homePath[0] = '\0';
+}
+
+// a circle at the end of a new edge. The maze has only two circles (start and end):
+//   end not found yet: it is the start again if we are near it, otherwise it is the end
+//   end already found: whichever of the two is closer to where we think we are
+// returns 0 (start), goalNode, or -1 (the end, seen for the first time)
+static int matchCircle(int32_t x, int32_t y, uint32_t segMs) {
+
+  int32_t toStart = abs(x - nodes[0].x) + abs(y - nodes[0].y);
+
+  if (goalNode < 0) {
+    int32_t tol = (int32_t)((driftMs + segMs) * CIRCLE_TOL_FRAC);
+    if (tol < CIRCLE_TOL_MIN) tol = CIRCLE_TOL_MIN;
+    if (tol > CIRCLE_TOL_MAX) tol = CIRCLE_TOL_MAX;
+    return toStart <= tol ? 0 : -1;
+  }
+
+  int32_t toGoal = abs(x - nodes[goalNode].x) + abs(y - nodes[goalNode].y);
+  return toStart <= toGoal ? 0 : goalNode;
 }
 
 void maze_arrive(uint8_t relExits, bool circle, uint32_t segMs) {
@@ -288,25 +272,18 @@ void maze_arrive(uint8_t relExits, bool circle, uint32_t segMs) {
     int32_t x = p->x + DX[h] * (int32_t)segMs;
     int32_t y = p->y + DY[h] * (int32_t)segMs;
 
-    if (circle) {
-      cur = matchCircle(x, y, segMs);
+    cur = circle ? matchCircle(x, y, segMs) : findMatch(prev, h, x, y, segMs);
 
-      if (cur == 0) {
-        // back in the START circle: we know exactly where we are again (0,0), and since
-        // the start has one line we must have come down it heading south. The edge is only
-        // stored on our side, so the solve run still always leaves the start northwards.
-        p->nbr[h] = 0;
-        p->len[h] = segMs;
-        curNode = 0;
-        heading = 2;                  // S
-        circleBack = 0;               // leave north again
-        atCircle = true;
-        driftMs = 0;
-        arriveHow = "START again";
-        return;
-      }
-    } else {
-      cur = findMatch(prev, h, x, y, segMs, absExits);
+    if (circle && cur == 0) {
+      // back in the START circle: we know exactly where we are again. The start has one
+      // line, so we came down it heading south (the solve run still leaves it northwards).
+      p->nbr[h] = 0;
+      p->len[h] = segMs;
+      curNode = 0;
+      heading = 2;
+      driftMs = 0;
+      arriveHow = "START again";
+      return;
     }
 
     if (cur >= 0) {
@@ -335,11 +312,6 @@ void maze_arrive(uint8_t relExits, bool circle, uint32_t segMs) {
     arriveHow = "END";
   }
 
-  if (circle) {
-    atCircle = true;
-    circleBack = back;                // the car backs out and turns around on the same line
-  }
-
   curNode = cur;
 }
 
@@ -349,21 +321,6 @@ char maze_next_move(void) {
     return 'D';
 
   node_t *n = &nodes[curNode];
-
-  // 0. in a circle the car always backs out on the line it came in on
-  if (atCircle) {
-    atCircle = false;
-    bool left = false;
-    for (int i = 0; i < nodeCount && !left; i++)
-      left = hasUnexplored(i);
-    if (!left) {
-      exploreDone = true;
-      link_send("NODE %d %s -> every branch explored", curNode, arriveHow);
-      return 'D';
-    }
-    routeLen = 0;
-    return depart(circleBack, "leave circle");
-  }
 
   // 1. an unexplored branch right here: right, straight, left, back
   static const int PREF[4] = { REL_R, REL_S, REL_L, REL_B };
@@ -477,76 +434,6 @@ bool maze_compute_best(void) {
   link_send("SHORTEST length=%lu ms through %d nodes", (unsigned long)dist[goalNode], k);
   return true;
 }
-
-// ---------- drive back to the start after training ----------
-
-char maze_plan_home(bool turnedAround) {
-
-  homeLen = 0;
-  homePath[0] = '\0';
-
-  int cur = curNode;
-  if (cur == 0)
-    return 'H';                       // already in the start circle
-
-  // where the car really is and which way it faces
-  int from, inDir;
-  char first = 0;
-  int h = turnedAround ? opposite(heading) : heading;
-
-  if (nodes[cur].circle) {
-    first = 'C';                      // back out of the circle and turn round first
-    inDir = circleBack;
-    from = nodes[cur].nbr[inDir];
-  } else {
-    from = cur;
-    inDir = h;
-  }
-  if (from < 0)
-    return 0;
-
-  uint32_t dist[MAZE_MAX_NODES];
-  int16_t prev[MAZE_MAX_NODES];
-  dijkstraAvoid = goalNode;           // don't drive through the end circle on the way
-  dijkstra(from, dist, prev);
-  dijkstraAvoid = -1;
-
-  if (dist[0] == NO_DIST)
-    return 0;
-
-  int16_t tmp[MAZE_MAX_NODES], path[MAZE_MAX_NODES];
-  int k = 0;
-  for (int v = 0; v >= 0 && k < MAZE_MAX_NODES; v = prev[v])
-    tmp[k++] = v;
-  for (int i = 0; i < k; i++)
-    path[i] = tmp[k - 1 - i];
-
-  int startIdx = 0;
-  if (first == 0) {
-    // at a normal node: the first move is made right here
-    if (k < 2)
-      return 0;
-    first = REL_CH[(dirTo(path[0], path[1]) - h + 4) % 4];
-    startIdx = 1;
-  }
-
-  // one move per node on the way, like the solve run
-  for (int i = startIdx; i < k - 1; i++) {
-    int in = (i == 0) ? inDir : dirTo(path[i - 1], path[i]);
-    int out = dirTo(path[i], path[i + 1]);
-    int rel = (out - in + 4) % 4;
-    uint8_t e = nodes[path[i]].exits;
-    if (rel == REL_S && e == ((1 << opposite(in)) | (1 << out)))
-      continue;                       // straight-through node, not detected while driving
-    if (homeLen < MAZE_MAX_MOVES)
-      homePath[homeLen++] = REL_CH[rel];
-  }
-  homePath[homeLen] = '\0';
-  return first;
-}
-
-const char *maze_home(void) { return homePath; }
-int maze_home_len(void)     { return homeLen; }
 
 const char *maze_best(void) { return bestPath; }
 int maze_best_len(void)     { return bestLen; }

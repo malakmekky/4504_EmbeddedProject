@@ -27,16 +27,15 @@
 #define PWM_FREQ_HZ 1000           // close to the Mega's 980 Hz, so speeds behave the same
 
 // ---------------- speeds (0-255) ----------------
-#define NORMAL_SPEED       95     // (phase 0: 120) slower = fewer drift-offs and missed intersections
-#define TURN_SPEED         125     // <-- CHECK: keep the value you are using now
+#define NORMAL_SPEED       110     // (phase 0: 120) a bit slower = fewer drift-offs and missed intersections
+#define TURN_SPEED         120     // (phase 0: 110) 145 spun past the line: ~20 failed turns per training
 #define SCAN_SPEED          90     // (phase 0)
-#define KICK_SPEED         190     // <-- CHECK: keep the value you are using now
-#define FOLLOW_MAX_SPEED   135     // (phase 0: 160) keeps the same steering headroom above NORMAL_SPEED
-#define SEARCH_SPEED       120     // <-- CHECK: keep the value you are using now
+#define KICK_SPEED         160     // (phase 0: 150) 180 + fast turns overshot the line and restarted the ESP32
+#define FOLLOW_MAX_SPEED   150     // (phase 0: 160) same steering headroom above NORMAL_SPEED
+#define SEARCH_SPEED       100     // (phase 0)
 #define SOLVE_SPEED_BOOST    0     // extra speed during the solve run, raise once it's reliable
-
 // ---------------- timings (ms) ----------------
-#define KICK_TIME           80     // (phase 0)
+#define KICK_TIME           40     // (phase 0)
 #define PIVOT_CREEP_TIME    50     // (phase 0)
 #define BRAKE_TIME          30     // (phase 0)
 #define NODE_TIME          130     // (phase 0) forward scan over an intersection
@@ -44,7 +43,7 @@
 #define MIN_TURN_TIME      180     // (phase 0)
 #define MAX_TURN_TIME     2200     // (phase 0)
 #define TURN_STABLE_TIME    30     // (phase 0) center must stay on the line this long
-#define COOLDOWN_TIME      300     // (phase 0) min time between two intersections
+#define COOLDOWN_TIME      200     // (phase 0: 300) min time between two intersections, shorter for dense tracks
 #define LOST_TIME          120     // (phase 0)
 #define TURN_PROTECTION_TIME 350   // (phase 0)
 #define ALIGN_TIME          30     // (phase 0)
@@ -52,30 +51,30 @@
 #define RETRY_AFTER       1500     // (phase 0)
 #define MAX_SEARCH_TRIES     3     // give up (stop + report) after this many failed searches
 
-#define END_CONFIRM_TIME    80     // extra creep to confirm the end circle (all 5 black)
+#define END_CONFIRM_TIME   120     // extra creep to confirm the end circle (all 5 black) (was 80)
+#define NODE_DRIFT_ERR     1.5f    // after creeping over a "branch", line still this far to that side = drift, not a node (was 1.0)
 #define START_TIMEOUT     3000     // max time to drive out of the start circle
 #define START_DELAY       1000     // pause after TRAIN/SOLVE is received
-#define TRAIN_MAX_TIME  150000     // once the end circle is known, stop exploring after this long and use the map so far
+#define TRAIN_MAX_TIME  180000     // once the end circle is found, stop exploring after this long (ms) and use the map so far
 #define UTURN_MAX_TIME    4000     // max time for a 180 degree spin
 #define TURN90_GUESS_MS    500     // first guess of a 90 degree spin time, learned while running
 #define CORNER_RATIO       1.5f    // spin shorter than 1.5 x (90 deg time) = it was a corner, not a dead end
-#define LINE_GAP_MS         50     // while spinning, center must be white this long between two lines (phase 0: 15)
+#define LINE_GAP_MS         15     // while spinning, center must be white this long between two lines
 #define CIRCLE_REVERSE_EXTRA 250   // after backing out of a circle onto the line, keep reversing this long
 #define CIRCLE_REVERSE_TIMEOUT 2500
 
 // ---------------- maze map ----------------
-#define MATCH_TOL_FRAC     0.25f   // a new edge ends at a known node if within 25% of the distance driven...
+#define MATCH_TOL_FRAC     0.35f   // a new edge ends at a known node if within 35% of the edge length... (was 0.30, best in the simulator)
 #define MATCH_TOL_MIN       250    // ...or 250 ms, whichever is bigger
-#define MATCH_EXIT_DIFF       1    // a known node may differ by at most 1 exit from what the sensors see now
 #define CIRCLE_TOL_FRAC    0.30f   // before the end is found, a circle this close to the start is the start again...
 #define CIRCLE_TOL_MIN      400    // ...but at least 400 ms
 #define CIRCLE_TOL_MAX     1000    // ...and at most 1000 ms (so the real end is never mistaken for the start)
 
 // ---------------- line following ----------------
 #define DRIFT_ERR          0.9f    // (phase 0) |error| above this before losing the line = drifted off
-#define KP                15.0f    // (phase 0)
+#define KP                25.0f    // (phase 0: 15) stronger steering so the car stays on the line instead of drifting off
 #define KI                 0.0f    // tune after KD
-#define KD                 0.0f    // keep 0 (the D term is divided by dt = 5 ms, so even 0.5 is huge)
+#define KD                 0.0f    // try 0.3 - 1.0 to damp wobble
 #define PID_PERIOD_MS        5     // I and D terms are updated at this fixed rate
 #define INTEGRAL_LIMIT     2.0f
 

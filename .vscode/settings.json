@@ -1,3 +1,4 @@
 {
-    "idf.currentSetup": "/Users/malak/esp/v5.4/esp-idf"
+    "idf.currentSetup": "/Users/malak/esp/v5.4/esp-idf",
+    "cmake.sourceDirectory": "/Users/malak/Documents/embeddedProject/phase 1"
 }

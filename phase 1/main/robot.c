@@ -15,10 +15,6 @@
  * TRAIN: at every node the map in maze.c decides where to go (depth-first
  *        exploration) until every branch is explored, then computes the shortest path.
  * SOLVE: replays the shortest path, one move per node, and stops at the end circle.
- * RETURN: after training, drives back to the start circle the same way (one planned
- *        move per node), turns round inside it and waits for SOLVE.
- * FORGET (command): erases the saved path and map, e.g. when the maze changes.
- * The start is whichever circle the car is in when TRAIN is sent.
  */
 #include <math.h>
 #include <stdbool.h>
@@ -26,6 +22,7 @@
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "esp_system.h"
 
 #include "config.h"
 #include "util.h"
@@ -51,8 +48,7 @@ static const char *STATE_NAMES[] = {
   "IDLE", "LEAVE_START", "FOLLOW", "NODE", "TURN", "UTURN", "EXIT_CIRCLE", "RECOVER", "FINISHED"
 };
 
-typedef enum { MODE_TRAIN, MODE_SOLVE, MODE_RETURN } run_mode_t;
-static const char *MODE_NAMES[] = { "TRAIN", "SOLVE", "RETURN" };
+typedef enum { MODE_TRAIN, MODE_SOLVE } run_mode_t;
 
 // ---------- state ----------
 
@@ -79,14 +75,7 @@ static int turnDir = 1;                // TURN / UTURN: 1 right, -1 left
 static int turnSkip = 0;               // UTURN: lines to pass before stopping
 static bool uturnFromDeadEnd = false;  // UTURN: was it a dead end (or a missed corner)?
 
-static int solveStep = 0;              // solving / returning: index into the planned moves
-static bool lastLeft = false, lastRight = false;   // branches seen at the last node
-static bool finishedByUturn = false;   // training ended right after a dead-end U-turn
-static int extraMoves = 0;             // moves made off-plan while solving
-
-#ifndef SOLVE_EXTRA_MOVES
-#define SOLVE_EXTRA_MOVES 2            // off-plan moves allowed in SOLVE before stopping (none in RETURN)
-#endif
+static int solveStep = 0;              // solving: index into the best path
 static uint32_t avgTurn90 = TURN90_GUESS_MS;
 
 // PID
@@ -106,8 +95,6 @@ static bool backOnLine = false;
 static uint32_t phaseStart = 0;
 
 // ---------- helpers ----------
-
-static void arrivedHome(void);
 
 static void enter(robot_state_t next) {
 
@@ -235,8 +222,6 @@ static void startRun(run_mode_t m) {
   searchTries = 0;
   turnCompleted = false;
   lastTurnDirection = 1;
-  finishedByUturn = false;
-  extraMoves = 0;
 
   if (m == MODE_TRAIN) {
     maze_reset();
@@ -252,11 +237,28 @@ static void startRun(run_mode_t m) {
   enter(ST_LEAVE_START);
 }
 
+// why the ESP32 last restarted (sent with every STATUS, since the READY message at boot
+// goes out before the PC has reconnected)
+static const char *resetReason(void) {
+  switch (esp_reset_reason()) {
+    case ESP_RST_POWERON:  return "power-on";
+    case ESP_RST_BROWNOUT: return "BROWNOUT (supply voltage dipped)";
+    case ESP_RST_PANIC:    return "CRASH (panic, see serial monitor)";
+    case ESP_RST_TASK_WDT:
+    case ESP_RST_INT_WDT:
+    case ESP_RST_WDT:      return "WATCHDOG (code stuck)";
+    case ESP_RST_SW:       return "software restart";
+    case ESP_RST_EXT:      return "reset button";
+    default:               return "other";
+  }
+}
+
 static void sendStatus(void) {
   link_send("STATUS %s %s path=%s",
             STATE_NAMES[state],
-            MODE_NAMES[mode],
+            mode == MODE_TRAIN ? "TRAIN" : "SOLVE",
             maze_best_len() > 0 ? maze_best() : "-");
+  link_send("BOOT last restart: %s, up %lu s", resetReason(), (unsigned long)(millis() / 1000));
 }
 
 static void handleCommands(void) {
@@ -434,31 +436,22 @@ static void stFollow(void) {
   followLine(s);
 }
 
-// the list of moves being replayed: the shortest path (SOLVE) or the way home (RETURN)
-static const char *plan(void) { return mode == MODE_RETURN ? maze_home() : maze_best(); }
-static int planLen(void)      { return mode == MODE_RETURN ? maze_home_len() : maze_best_len(); }
-static const char *planTag(void) { return mode == MODE_RETURN ? "HOME" : "STEP"; }
-
-// solving / returning: pick the next planned move at this node
+// solving: pick the next move of the best path at this node
 static char solveMove(bool left, bool straight, bool right) {
 
-  int total = planLen();
+  int total = maze_best_len();
 
   if (solveStep >= total) {
-    // the plan is finished but we're not in the circle: the map doesn't match the track.
-    // Don't wander around the maze: allow a couple of moves while solving, then stop.
-    if (mode == MODE_RETURN || ++extraMoves > SOLVE_EXTRA_MOVES)
-      return 'X';
     char m = handRule(left, straight, right);
     link_send("WARN path used up before the end, taking %c", m);
     return m;
   }
 
-  char planned = plan()[solveStep];
+  char planned = maze_best()[solveStep];
 
   if (moveAvailable(planned, left, straight, right)) {
     solveStep++;
-    link_send("%s %d/%d %c", planTag(), solveStep, total, planned);
+    link_send("STEP %d/%d %c", solveStep, total, planned);
     return planned;
   }
 
@@ -468,8 +461,6 @@ static char solveMove(bool left, bool straight, bool right) {
     return 'S';
   }
 
-  if (mode == MODE_RETURN || ++extraMoves > SOLVE_EXTRA_MOVES)
-    return 'X';
   char m = handRule(left, straight, right);
   solveStep++;
   link_send("WARN planned %c not possible, taking %c", planned, m);
@@ -522,30 +513,34 @@ static void stNode(void) {
 
   brakeCar();
 
+  // Not a real intersection, just the car drifting: past a real 90 degree branch the line
+  // is centered (it goes on) or gone (T / corner). If it is still off to the side the
+  // "branch" was on, the line simply slid under the side sensors. Don't record a node.
+  float afterErr = 0;
+  bool lineAfter = !circle && lineError(after, &afterErr);
+  bool drifted = lineAfter &&
+                 ((left && !right && afterErr <= -NODE_DRIFT_ERR) ||
+                  (right && !left && afterErr >= NODE_DRIFT_ERR));
+  if (drifted) {
+    link_send("SKIP drift, not an intersection");
+    readyForNode = false;              // wait for a centered line before the next node
+    lastNodeTime = millis();
+    pidReset();
+    enter(ST_FOLLOW);                  // keep segMs: the distance to the next node continues
+    return;
+  }
+
   // the sensors are past the cross line now: black in the middle = the line goes on
   bool straight = !circle && (after & MIDDLE_MASK) != 0;
   char move;
-  lastLeft = left;
-  lastRight = right;
 
-  if (mode == MODE_SOLVE || mode == MODE_RETURN) {
+  if (mode == MODE_SOLVE) {
 
     if (circle) {
-      if (mode == MODE_SOLVE) enter(ST_FINISHED);
-      else arrivedHome();
+      enter(ST_FINISHED);
       return;
     }
     move = solveMove(left, straight, right);
-
-    if (move == 'X') {
-      stopCar();
-      if (mode == MODE_RETURN)
-        link_send("ERR lost on the way back to the start: put the car in the start circle by hand, then SOLVE");
-      else
-        link_send("ERR the saved path does not match the track: stopping. Check the car is in the training start circle, or FORGET and TRAIN again");
-      enter(ST_IDLE);
-      return;
-    }
 
   } else {
 
@@ -556,7 +551,8 @@ static void stNode(void) {
 
     maze_arrive(rel, circle, segMs);
 
-    // safety net: never explore forever (e.g. going round a loop the map didn't recognise)
+    // safety net: once the end is known, don't explore forever (e.g. after a failed turn
+    // the map can keep thinking it is somewhere new)
     if (maze_goal_found() && millis() - runStartTime > TRAIN_MAX_TIME) {
       link_send("WARN training time limit reached, using the map built so far");
       move = 'D';
@@ -594,6 +590,7 @@ static void stNode(void) {
     enter(ST_TURN);
   }
 }
+
 
 static void stTurn(void) {
 
@@ -646,16 +643,15 @@ static void stUturn(void) {
     } else {
       maze_arrive(0, false, seg);      // dead end: only way out is back
       if (maze_next_move() == 'D') {   // that was the last unexplored branch
-        finishedByUturn = true;        // the car already faces back out
         enter(ST_FINISHED);
         return;
       }
     }
 
-  } else if (corner && solveStep < planLen() && plan()[solveStep] == move) {
+  } else if (corner && solveStep < maze_best_len() && maze_best()[solveStep] == move) {
     // solving: a missed corner that matches the plan still counts as that step
     solveStep++;
-    link_send("%s %d/%d %c", planTag(), solveStep, planLen(), move);
+    link_send("STEP %d/%d %c", solveStep, maze_best_len(), move);
   } else {
     link_send("WARN unexpected %s while solving", corner ? "corner" : "dead end");
   }
@@ -779,64 +775,12 @@ static void stRecover(void) {
   }
 }
 
-// we drove into the start circle at the end of RETURN: turn round on the spot so the
-// car faces out of the circle again, ready for SOLVE (a timed 180, using the learned 90 degree time)
-static void arrivedHome(void) {
-  brakeCar();
-  delay_ms(100);
-  spin(1, TURN_SPEED);
-  delay_ms(2 * avgTurn90);
-  brakeCar();
-  stopCar();
-  mode = MODE_SOLVE;
-  link_send("BACK AT START: ready, send SOLVE");
-  enter(ST_IDLE);
-}
-
-// after training: drive back to the start circle (first move from maze_plan_home)
-static void startReturn(char first) {
-
-  mode = MODE_RETURN;
-  solveStep = 0;
-  extraMoves = 0;
-  afterManeuver();
-
-  if (first == 'H') {
-    arrivedHome();
-    return;
-  }
-  if (first == 0) {
-    link_send("WARN no route back to the start, put the car in the start circle by hand");
-    enter(ST_IDLE);
-    return;
-  }
-
-  link_send("RETURN to start: first %c, then %d moves %s", first, maze_home_len(), maze_home());
-
-  if (first == 'C') {
-    enter(ST_EXIT_CIRCLE);             // back out of the end circle, turn round, follow
-  } else if (first == 'S') {
-    enter(ST_FOLLOW);
-  } else if (first == 'B') {
-    if (!lastRight)     { turnDir = 1;  turnSkip = 0; }
-    else if (!lastLeft) { turnDir = -1; turnSkip = 0; }
-    else                { turnDir = 1;  turnSkip = 1; }
-    uturnFromDeadEnd = false;
-    enter(ST_UTURN);
-  } else {
-    turnDir = (first == 'R') ? 1 : -1;
-    enter(ST_TURN);
-  }
-}
-
 static void stFinished(void) {
 
   stopCar();
   uint32_t runTime = millis() - runStartTime;
 
   if (mode == MODE_TRAIN) {
-
-    bool ok = false;
 
     if (!maze_goal_found()) {
       link_send("ERR explored everything but never found the end circle");
@@ -849,20 +793,12 @@ static void stFinished(void) {
       link_send("TRAIN_DONE time=%lu ms best=%d moves%s",
                 (unsigned long)runTime, maze_best_len(),
                 saved ? "" : " (not saved to flash)");
-      link_send(saved ? "MAZE COORDINATES STORED" : "WARN maze not saved to flash");
-      ok = true;
     }
     maze_send_map();
-
-    if (ok) {
-      startReturn(maze_plan_home(finishedByUturn));
-      return;
-    }
 
   } else {
     link_send("SOLVE_DONE time=%lu ms steps=%d/%d",
               (unsigned long)runTime, solveStep, maze_best_len());
-    link_send("MAZE SOLVED: reached the end circle (%d/%d planned moves)", solveStep, maze_best_len());
   }
 
   enter(ST_IDLE);

@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "ECNG4504_Robot") (type "KiCad") (uri "${KIPRJMOD}/ECNG4504_Robot.kicad_sym") (options "") (descr ""))
+)

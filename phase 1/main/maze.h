@@ -20,7 +20,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#define MAZE_MAX_NODES 96
+#define MAZE_MAX_NODES 64
 #define MAZE_MAX_MOVES 128
 
 // directions relative to the car's heading = number of 90 degree steps clockwise
@@ -59,16 +59,7 @@ void maze_send_map(void);
 
 // keep the best path in flash so it survives a reset between training and solving
 bool maze_save(void);
-
-// erase the saved path from flash and clear the map (the maze changed / new start circle)
-void maze_forget(void);
-
-// after training: plan the drive back to the start circle.
-//   turnedAround : the car has just U-turned at a dead end (it faces back the way it came)
-// returns the first thing to do: 'C' = back out of the circle we're in, 'H' = already home,
-// 'L'/'S'/'R'/'B' = move at the current node, 0 = no route. Then maze_home() has one
-// move per node on the way, like the solve path.
-char maze_plan_home(bool turnedAround);
-const char *maze_home(void);
-int maze_home_len(void);
 bool maze_load(void);
+
+// erase the saved path from flash and clear the map (new maze, or training from the other circle)
+void maze_forget(void);
