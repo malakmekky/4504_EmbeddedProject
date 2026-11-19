@@ -1,0 +1,77 @@
+19:28:23.787  STATUS IDLE TRAIN path=-
+19:28:36.288  >> TRAIN
+19:28:36.289  RUN TRAIN
+19:28:37.279  STATE LEAVE_START
+19:28:38.900  NODE 1 (0,1394) exits=ES new -> R explore
+19:28:41.210  WARN turn failed
+19:28:41.210  STATE RECOVER
+19:28:41.210  LOST -> full spin
+19:28:47.210  WARN search failed, retry 1
+19:28:54.708  WARN search failed, retry 2
+19:28:58.848  FOUND line
+19:29:12.662  STATUS IDLE TRAIN path=-
+19:29:22.430  >> TRAIN
+19:29:22.431  RUN TRAIN
+19:29:23.419  STATE LEAVE_START
+19:29:26.420  ERR could not find the line leaving the start
+19:29:26.421  STATE IDLE
+19:29:37.042  RUN TRAIN
+19:29:37.045  >> TRAIN
+19:29:38.029  STATE LEAVE_START
+19:29:41.030  ERR could not find the line leaving the start
+19:29:41.031  STATE IDLE
+19:29:53.870  >> TRAIN
+19:29:53.871  RUN TRAIN
+19:29:54.861  STATE LEAVE_START
+19:29:56.298  NODE 1 (0,1208) exits=ESW new -> R explore
+19:29:58.368  STATE RECOVER
+19:29:58.399  LOST drifted off -> small sweeps
+19:30:00.320  FOUND line
+19:30:00.858  NODE 2 (752,1208) exits=SW new -> R explore
+19:30:04.249  NODE 3 (752,-1423) exits=NESW new -> R explore
+19:30:06.589  NODE 4 (326,-1423) exits=NE new -> R explore
+19:30:07.699  NODE 5 (326,-1084) exits=SW new -> L explore
+19:30:09.109  STATE RECOVER
+19:30:09.138  LOST drifted off -> small sweeps
+19:30:10.969  FOUND line
+19:30:11.511  NODE 6 (-271,-1084) exits=ES new -> L explore
+19:30:12.770  NODE 7 (-271,-1453) exits=NE new -> L explore
+19:30:14.239  NODE 8 (489,-1453) exits=NW new -> L explore
+19:30:16.579  WARN turn failed
+19:30:16.581  STATE RECOVER
+19:30:16.581  LOST -> full spin
+19:30:16.879  FOUND line
+19:30:17.390  STATE RECOVER
+19:30:17.391  LOST drifted off -> small sweeps
+19:30:18.774  FOUND line
+19:30:19.218  STATE RECOVER
+19:30:19.220  LOST drifted off -> small sweeps
+19:30:21.439  FOUND line
+19:30:22.008  STATE RECOVER
+19:30:22.009  LOST drifted off -> small sweeps
+19:30:23.960  FOUND line
+19:30:24.559  NODE 3 (752,-1423) exits=NESW loop -> R explore
+19:30:26.869  WARN turn failed
+19:30:26.871  STATE RECOVER
+19:30:26.871  LOST -> full spin
+19:30:29.795  FOUND line
+19:30:30.289  NODE 9 (1051,-1423) exits=NW new -> L explore
+19:30:31.701  NODE 10 (1051,-877) exits=SW new -> L explore
+19:30:32.868  NODE 11 (618,-877) exits=ES new -> L explore
+19:30:34.310  STATE RECOVER
+19:30:34.311  LOST drifted off -> small sweeps
+19:30:36.588  FOUND line
+19:30:37.039  STATE RECOVER
+19:30:37.041  LOST drifted off -> small sweeps
+19:30:39.080  FOUND line
+19:30:39.648  NODE 12 (618,-1783) exits=NE new -> L explore
+19:30:41.182  NODE 13 (1219,-1783) exits=NW new -> L explore
+19:30:42.948  NODE 14 (1219,-694) exits=NES new -> R explore
+19:30:45.951  NODE 15 (2186,-694) exits=NW new -> L explore
+19:30:48.258  WARN turn failed
+19:30:48.260  STATE RECOVER
+19:30:48.288  LOST -> full spin
+19:30:54.259  WARN search failed, retry 1
+19:31:01.760  WARN search failed, retry 2
+19:31:03.476  NODE 16 (2186,56) exits=SW new -> L explore
+19:31:12.860  STATUS IDLE TRAIN path=-

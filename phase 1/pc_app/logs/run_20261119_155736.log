@@ -1,0 +1,166 @@
+15:57:38.891  STATUS IDLE TRAIN path=RL
+15:59:31.691  STATUS IDLE TRAIN path=RL
+15:59:56.101  >> TRAIN
+15:59:56.101  RUN TRAIN
+15:59:57.091  STATE LEAVE_START
+15:59:57.360  STATE RECOVER
+15:59:57.361  LOST drifted off -> small sweeps
+15:59:57.481  FOUND line
+15:59:59.700  NODE 1 (0,1368) exits=ESW new -> R explore
+16:00:01.980  WARN turn failed
+16:00:02.009  STATE RECOVER
+16:00:02.009  LOST -> full spin
+16:00:07.649  FOUND line
+16:00:08.099  STATE RECOVER
+16:00:08.099  LOST drifted off -> small sweeps
+16:00:09.508  FOUND line
+16:00:10.498  NODE 2 (946,1368) exits=NESW new -> R explore
+16:00:12.148  NODE 3 (946,380) exits=NE new -> L explore
+16:00:14.069  NODE 4 (2172,380) exits=NSW new -> R explore
+16:00:16.228  NODE 5 (2172,-556) exits=NE new -> L explore
+16:00:17.518  NODE 6 (2450,-556) exits=NW new -> L explore
+16:00:18.779  NODE 7 (2450,-108) exits=SW new -> L explore
+16:00:20.189  NODE 8 (1796,-108) exits=ES new -> L explore
+16:00:21.478  STATE RECOVER
+16:00:21.478  LOST drifted off -> small sweeps
+16:00:24.118  FOUND line
+16:00:24.628  NODE 9 (1796,-754) exits=NE new -> L explore
+16:00:25.979  NODE 10 (2338,-754) exits=NW new -> L explore
+16:00:27.027  NODE 11 (2338,-454) exits=NSW new -> S explore
+16:00:28.197  NODE 12 (2338,396) exits=SW new -> L explore
+16:00:29.128  STATE RECOVER
+16:00:29.128  LOST drifted off -> small sweeps
+16:00:30.688  FOUND line
+16:00:31.018  STATE RECOVER
+16:00:31.018  LOST drifted off -> small sweeps
+16:00:32.488  FOUND line
+16:00:32.818  STATE RECOVER
+16:00:32.818  LOST drifted off -> small sweeps
+16:00:33.178  FOUND line
+16:00:33.597  STATE RECOVER
+16:00:33.627  LOST drifted off -> small sweeps
+16:00:33.987  FOUND line
+16:00:34.348  STATE RECOVER
+16:00:34.348  LOST drifted off -> small sweeps
+16:00:36.988  FOUND line
+16:00:41.877  STATE RECOVER
+16:00:41.907  LOST drifted off -> small sweeps
+16:00:43.647  FOUND line
+16:00:44.188  NODE 13 (-3890,396) exits=ES new -> L explore
+16:00:45.897  NODE 14 (-3890,-506) exits=NEW new -> R explore
+16:01:05.007  STATUS IDLE TRAIN path=RL
+16:01:07.107  >> TRAIN
+16:01:07.107  RUN TRAIN
+16:01:08.127  STATE LEAVE_START
+16:01:09.117  NODE 1 (0,755) exits=ES new -> R explore
+16:01:11.427  WARN turn failed
+16:01:11.428  STATE RECOVER
+16:01:11.457  LOST -> full spin
+16:01:13.407  FOUND line
+16:01:13.977  NODE 2 (340,755) exits=NEW new -> S explore
+16:01:14.817  NODE 3 (880,755) exits=W END -> B leave circle
+16:01:14.818  STATE EXIT_CIRCLE
+16:01:16.347  STATE UTURN
+16:01:19.347  STATE RECOVER
+16:01:19.348  LOST drifted off -> small sweeps
+16:01:20.277  FOUND line
+16:01:20.697  STATE RECOVER
+16:01:20.698  LOST drifted off -> small sweeps
+16:01:22.107  FOUND line
+16:01:27.417  STATE RECOVER
+16:01:27.418  LOST drifted off -> small sweeps
+16:01:30.268  FOUND line
+16:01:31.917  NODE 2 (340,755) exits=NESW known -> R explore
+16:01:34.227  WARN turn failed
+16:01:34.227  STATE RECOVER
+16:01:34.228  LOST -> full spin
+16:01:34.467  FOUND line
+16:01:35.097  STATE RECOVER
+16:01:35.098  LOST drifted off -> small sweeps
+16:01:37.588  FOUND line
+16:01:40.077  STATE RECOVER
+16:01:40.078  LOST drifted off -> small sweeps
+16:01:41.187  FOUND line
+16:01:41.697  STATE RECOVER
+16:01:41.698  LOST drifted off -> small sweeps
+16:01:47.697  WARN search failed, retry 1
+16:01:48.957  STATE RECOVER
+16:01:48.987  LOST drifted off -> small sweeps
+16:01:50.968  FOUND line
+16:01:51.507  NODE 4 (340,4383) exits=SW new -> L explore
+16:01:52.857  NODE 5 (-185,4383) exits=ES new -> L explore
+16:01:54.178  NODE 6 (-185,3828) exits=NESW new -> R explore
+16:01:56.367  NODE 7 (-484,3828) exits=NE new -> R explore
+16:01:58.797  NODE 8 (-484,4885) exits=SW new -> L explore
+16:02:00.087  STATE RECOVER
+16:02:00.088  LOST drifted off -> small sweeps
+16:02:00.477  FOUND line
+16:02:03.778  NODE 9 (-3877,4885) exits=ES new -> L explore
+16:02:05.487  NODE 10 (-3877,3934) exits=NE new -> L explore
+16:02:07.797  WARN turn failed
+16:02:07.798  STATE RECOVER
+16:02:07.827  LOST -> full spin
+16:02:10.317  FOUND line
+16:02:10.737  STATE RECOVER
+16:02:10.767  LOST drifted off -> small sweeps
+16:02:12.778  FOUND line
+16:02:15.927  STATE RECOVER
+16:02:15.927  LOST drifted off -> small sweeps
+16:02:21.927  WARN search failed, retry 1
+16:02:26.457  FOUND line
+16:02:26.968  NODE 11 (-249,3934) exits=SW new -> R explore
+16:02:28.377  NODE 12 (-249,3581) exits=NESW new -> R explore
+16:02:31.107  NODE 13 (-548,3581) exits=NEW new -> R explore
+16:02:33.417  WARN turn failed
+16:02:33.418  STATE RECOVER
+16:02:33.447  LOST -> full spin
+16:02:38.757  FOUND line
+16:02:39.688  NODE 14 (-548,4289) exits=SW new -> L explore
+16:02:41.278  NODE 15 (-1373,4289) exits=NE new -> R explore
+16:02:43.527  STATE UTURN
+16:02:46.107  PLAN go to node 13 (3 edges)
+16:02:46.137  NODE 16 (-1373,5152) exits=S new -> B backtrack
+16:02:48.417  NODE 15 (-1373,4289) exits=NE known -> L route
+16:02:49.737  STATE RECOVER
+16:02:49.738  LOST drifted off -> small sweeps
+16:02:51.447  FOUND line
+16:02:51.957  NODE 14 (-548,4289) exits=NSW known -> L explore
+16:02:53.397  NODE 17 (-548,4884) exits=SW new -> L explore
+16:02:54.897  STATE RECOVER
+16:02:54.898  LOST drifted off -> small sweeps
+16:02:56.847  FOUND line
+16:02:57.837  NODE 18 (-2279,4884) exits=ESW new -> S explore
+16:02:58.888  NODE 19 (-3069,4884) exits=NESW new -> R explore
+16:03:01.678  NODE 20 (-3069,5183) exits=ESW new -> R explore
+16:03:03.987  WARN turn failed
+16:03:03.988  STATE RECOVER
+16:03:03.990  LOST -> full spin
+16:03:05.217  FOUND line
+16:03:06.837  NODE 21 (-1701,5183) exits=NW new -> L explore
+16:03:08.157  NODE 22 (-1701,5482) exits=SW new -> L explore
+16:03:09.388  NODE 23 (-2120,5482) exits=ES new -> L explore
+16:03:10.977  NODE 24 (-2120,4691) exits=NE new -> L explore
+16:03:11.967  PLAN go to node 12 (1 edges)
+16:03:11.997  NODE 13 (-548,3581) exits=NEW loop -> S backtrack
+16:03:12.087  STATE UTURN
+16:03:12.747  NODE 12 (-249,3581) exits=NESW known -> L forced
+16:03:13.197  STATE RECOVER
+16:03:13.227  LOST drifted off -> small sweeps
+16:03:15.058  FOUND line
+16:03:15.627  PLAN go to node 12 (1 edges)
+16:03:15.628  NODE 11 (-249,3934) exits=SW known -> B backtrack
+16:03:15.628  STATE UTURN
+16:03:19.677  WARN u-turn failed
+16:03:19.678  STATE RECOVER
+16:03:19.707  LOST -> full spin
+16:03:24.357  FOUND line
+16:03:25.197  NODE 12 (-249,3581) exits=NESW known -> S explore
+16:03:25.587  STATE RECOVER
+16:03:25.588  LOST drifted off -> small sweeps
+16:03:27.267  FOUND line
+16:03:28.887  STATE RECOVER
+16:03:28.888  LOST drifted off -> small sweeps
+16:03:29.157  FOUND line
+16:03:38.697  >> STOP
+16:03:38.697  STATE IDLE
+16:03:38.698  STOPPED

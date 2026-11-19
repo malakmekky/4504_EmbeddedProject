@@ -1,0 +1,77 @@
+15:00:28.451  STATUS IDLE TRAIN path=LLRL
+15:00:35.021  >> TRAIN
+15:00:35.021  RUN TRAIN
+15:00:36.010  STATE LEAVE_START
+15:00:36.640  NODE 1 (0,381) exits=ES new -> R explore
+15:00:37.660  NODE 2 (317,381) exits=SW new -> R explore
+15:00:38.681  NODE 3 (317,80) exits=NW new -> R explore
+15:00:39.700  NODE 4 (26,80) exits=NE new -> R explore
+15:00:40.721  STATE RECOVER
+15:00:40.721  LOST drifted off -> small sweeps
+15:00:41.080  FOUND line
+15:00:41.591  STATE RECOVER
+15:00:41.591  LOST drifted off -> small sweeps
+15:00:41.951  FOUND line
+15:00:42.490  STATE RECOVER
+15:00:42.491  LOST drifted off -> small sweeps
+15:00:42.820  FOUND line
+15:00:43.391  STATE RECOVER
+15:00:43.391  LOST drifted off -> small sweeps
+15:00:43.811  FOUND line
+15:00:44.501  STATE RECOVER
+15:00:44.501  LOST drifted off -> small sweeps
+15:00:45.071  FOUND line
+15:00:45.580  NODE 5 (26,2609) exits=ES new -> R explore
+15:00:46.631  NODE 6 (325,2609) exits=SW new -> R explore
+15:00:47.650  NODE 7 (325,2296) exits=NW new -> R explore
+15:00:48.670  NODE 8 (18,2296) exits=NE new -> R explore
+15:00:49.691  NODE 9 (18,2615) exits=ES new -> R explore
+15:00:50.740  NODE 10 (323,2615) exits=SW new -> R explore
+15:00:51.760  NODE 11 (323,2292) exits=NW new -> R explore
+15:00:52.810  NODE 12 (-4,2292) exits=NE new -> R explore
+15:00:53.831  NODE 13 (-4,2591) exits=ES new -> R explore
+15:00:54.821  NODE 14 (295,2591) exits=SW new -> R explore
+15:00:55.840  NODE 15 (295,2292) exits=NW new -> R explore
+15:00:56.831  NODE 16 (-4,2292) exits=NE new -> R explore
+15:00:57.850  NODE 17 (-4,2595) exits=ES new -> R explore
+15:00:58.901  STATE RECOVER
+15:00:58.961  LOST drifted off -> small sweeps
+15:00:59.290  FOUND line
+15:00:59.771  STATE RECOVER
+15:00:59.771  LOST drifted off -> small sweeps
+15:01:00.160  FOUND line
+15:01:00.701  NODE 18 (1070,2595) exits=SW new -> R explore
+15:01:01.691  NODE 19 (1070,2296) exits=NW new -> R explore
+15:01:02.712  NODE 20 (771,2296) exits=NE new -> R explore
+15:01:03.791  STATE RECOVER
+15:01:03.822  LOST drifted off -> small sweeps
+15:01:29.832  STATUS IDLE TRAIN path=LLRL
+15:01:37.091  >> TRAIN
+15:01:37.091  RUN TRAIN
+15:01:38.081  STATE LEAVE_START
+15:01:38.681  NODE 1 (0,348) exits=ES new -> R explore
+15:01:39.701  NODE 2 (304,348) exits=SW new -> R explore
+15:01:40.691  NODE 3 (304,49) exits=NW new -> R explore
+15:01:41.711  NODE 4 (3,49) exits=NE new -> R explore
+15:01:42.701  NODE 5 (3,341) exits=ES new -> R explore
+15:01:42.761  >> STOP
+15:01:42.821  STATE IDLE
+15:01:42.821  STOPPED
+15:03:11.792  STATUS IDLE TRAIN path=LLRL
+15:03:26.562  >> TRAIN
+15:03:26.562  RUN TRAIN
+15:03:27.552  STATE LEAVE_START
+15:03:28.062  STATE RECOVER
+15:03:28.092  LOST drifted off -> small sweeps
+15:03:28.302  FOUND line
+15:03:28.962  NODE 1 (0,640) exits=ES new -> R explore
+15:03:30.072  NODE 2 (358,640) exits=SW new -> R explore
+15:03:31.662  STATE RECOVER
+15:03:31.663  LOST drifted off -> small sweeps
+15:03:33.402  FOUND line
+15:03:34.123  NODE 3 (358,-588) exits=NW new -> R explore
+15:03:35.232  NODE 4 (-63,-588) exits=NE new -> R explore
+15:03:36.402  NODE 5 (-63,-141) exits=ES new -> R explore
+15:03:41.233  >> STOP
+15:03:41.233  STATE IDLE
+15:03:41.233  STOPPED

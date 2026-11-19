@@ -1,0 +1,375 @@
+15:33:25.729  STATUS IDLE TRAIN path=LRRSRRR
+15:34:42.736  STATUS IDLE TRAIN path=LRRSRRR
+15:34:50.836  >> TRAIN
+15:34:50.836  RUN TRAIN
+15:34:51.826  STATE LEAVE_START
+15:34:53.477  NODE 1 (0,1286) exits=ES new -> R explore
+15:34:55.786  WARN turn failed
+15:34:55.787  STATE RECOVER
+15:34:55.816  LOST -> full spin
+15:34:59.177  FOUND line
+15:34:59.686  STATE RECOVER
+15:34:59.687  LOST drifted off -> small sweeps
+15:35:01.636  FOUND line
+15:35:02.206  NODE 2 (594,1286) exits=NW new -> L explore
+15:35:03.196  NODE 3 END -> every branch explored
+15:35:03.226  STATE FINISHED
+15:35:03.226  SHORTEST length=2180 ms through 4 nodes
+15:35:03.256  PATH RAW RL
+15:35:03.256  PATH BEST RL
+15:35:03.286  TRAIN_DONE time=11379 ms best=2 moves
+15:35:03.286  MAZE COORDINATES STORED
+15:35:03.287  MAP BEGIN 4
+15:35:03.287  MAP N 0 0 0 N S
+15:35:03.320  MAP N 1 0 1286 ES -
+15:35:03.320  MAP N 2 594 1286 NW -
+15:35:03.320  MAP N 3 594 1586 S E
+15:35:03.321  MAP E 0 1 1286
+15:35:03.346  MAP E 1 2 594
+15:35:03.346  MAP E 2 3 300
+15:35:03.347  MAP P 0 1 2 3
+15:35:03.364  MAP END
+15:35:03.806  RETURN to start: first C, then 2 moves RL
+15:35:03.806  STATE EXIT_CIRCLE
+15:35:04.216  STATE UTURN
+15:35:08.086  HOME 1/2 R
+15:35:09.736  STATE RECOVER
+15:35:09.767  LOST drifted off -> small sweeps
+15:35:09.886  FOUND line
+15:35:11.086  STATE UTURN
+15:35:15.196  WARN u-turn failed
+15:35:15.197  STATE RECOVER
+15:35:15.197  LOST -> full spin
+15:35:20.986  FOUND line
+15:35:21.436  STATE RECOVER
+15:35:21.467  LOST drifted off -> small sweeps
+15:35:23.206  FOUND line
+15:35:23.716  HOME 2/2 L
+15:35:25.277  WARN path used up before the end, taking L
+15:35:26.206  STATE RECOVER
+15:35:26.206  LOST drifted off -> small sweeps
+15:35:27.916  FOUND line
+15:35:28.336  STATE RECOVER
+15:35:28.336  LOST drifted off -> small sweeps
+15:35:28.726  FOUND line
+15:35:29.176  STATE RECOVER
+15:35:29.206  LOST drifted off -> small sweeps
+15:35:30.646  FOUND line
+15:35:31.216  WARN path used up before the end, taking L
+15:35:32.536  WARN path used up before the end, taking R
+15:35:35.896  STATE UTURN
+15:35:38.086  WARN unexpected dead end while solving
+15:35:38.596  STATE RECOVER
+15:35:38.596  LOST drifted off -> small sweeps
+15:35:40.426  FOUND line
+15:35:40.726  STATE UTURN
+15:35:41.296  WARN unexpected corner while solving
+15:35:41.746  STATE RECOVER
+15:35:41.776  LOST drifted off -> small sweeps
+15:35:41.926  FOUND line
+15:35:42.136  STATE RECOVER
+15:35:42.137  LOST drifted off -> small sweeps
+15:35:42.346  FOUND line
+15:35:42.586  STATE RECOVER
+15:35:42.586  LOST drifted off -> small sweeps
+15:35:42.826  FOUND line
+15:35:43.096  STATE RECOVER
+15:35:43.126  LOST drifted off -> small sweeps
+15:35:43.516  FOUND line
+15:35:43.876  STATE RECOVER
+15:35:43.876  LOST drifted off -> small sweeps
+15:35:45.616  FOUND line
+15:35:46.156  WARN path used up before the end, taking L
+15:35:47.536  WARN path used up before the end, taking R
+15:35:49.156  WARN path used up before the end, taking R
+15:35:50.596  WARN path used up before the end, taking S
+15:35:51.286  STATE RECOVER
+15:35:51.286  LOST drifted off -> small sweeps
+15:35:56.536  FOUND line
+15:35:57.046  WARN path used up before the end, taking S
+15:35:58.936  WARN path used up before the end, taking L
+15:36:01.036  WARN path used up before the end, taking L
+15:36:02.206  WARN path used up before the end, taking R
+15:36:04.367  WARN path used up before the end, taking R
+15:36:06.706  WARN path used up before the end, taking R
+15:36:09.016  WARN turn failed
+15:36:09.016  STATE RECOVER
+15:36:09.017  LOST -> full spin
+15:36:11.326  FOUND line
+15:36:12.196  WARN path used up before the end, taking R
+15:36:14.506  WARN turn failed
+15:36:14.506  STATE RECOVER
+15:36:14.535  LOST -> full spin
+15:36:15.557  FOUND line
+15:36:16.696  STATE RECOVER
+15:36:16.696  LOST drifted off -> small sweeps
+15:36:17.026  FOUND line
+15:36:17.536  WARN path used up before the end, taking R
+15:36:19.846  WARN turn failed
+15:36:19.847  STATE RECOVER
+15:36:19.847  LOST -> full spin
+15:36:20.026  FOUND line
+15:36:21.406  WARN path used up before the end, taking R
+15:36:24.377  WARN path used up before the end, taking R
+15:36:26.686  WARN turn failed
+15:36:26.686  STATE RECOVER
+15:36:26.715  LOST -> full spin
+15:36:27.736  FOUND line
+15:36:28.846  WARN path used up before the end, taking R
+15:36:31.156  WARN turn failed
+15:36:31.156  STATE RECOVER
+15:36:31.185  LOST -> full spin
+15:36:31.757  FOUND line
+15:36:33.946  WARN path used up before the end, taking R
+15:36:35.356  WARN path used up before the end, taking R
+15:36:37.426  WARN path used up before the end, taking S
+15:36:38.296  WARN path used up before the end, taking R
+15:36:40.606  WARN turn failed
+15:36:40.606  STATE RECOVER
+15:36:40.607  LOST -> full spin
+15:36:41.236  FOUND line
+15:36:42.136  WARN path used up before the end, taking L
+15:36:43.336  WARN path used up before the end, taking R
+15:36:45.526  WARN path used up before the end, taking R
+15:36:46.846  WARN path used up before the end, taking L
+15:36:47.805  WARN path used up before the end, taking R
+15:36:50.267  WARN path used up before the end, taking R
+15:36:52.426  WARN path used up before the end, taking R
+15:36:54.646  WARN path used up before the end, taking R
+15:36:56.506  STATE UTURN
+15:36:58.277  WARN unexpected dead end while solving
+15:36:59.567  WARN path used up before the end, taking R
+15:37:01.935  WARN path used up before the end, taking R
+15:37:05.416  WARN path used up before the end, taking R
+15:42:39.694  STATUS IDLE TRAIN path=RL
+15:42:47.496  >> STOP
+15:42:47.496  STOPPED
+15:42:53.317  >> SOLVE
+15:42:53.318  RUN SOLVE 2 RL
+15:42:54.307  STATE LEAVE_START
+15:43:03.878  STATE UTURN
+15:43:04.268  STEP 1/2 R
+15:43:05.558  STEP 2/2 L
+15:43:06.608  WARN path used up before the end, taking R
+15:43:08.888  WARN turn failed
+15:43:08.918  STATE RECOVER
+15:43:08.919  LOST -> full spin
+15:43:11.529  FOUND line
+15:43:12.819  WARN path used up before the end, taking R
+15:43:15.099  WARN turn failed
+15:43:15.129  STATE RECOVER
+15:43:15.129  LOST -> full spin
+15:43:15.999  FOUND line
+15:43:18.549  >> STOP
+15:43:18.549  STATE IDLE
+15:43:18.549  STOPPED
+15:43:40.150  >> SOLVE
+15:43:40.150  RUN SOLVE 2 RL
+15:43:41.139  STATE LEAVE_START
+15:43:42.609  WARN planned R not possible, taking L
+15:43:43.539  WARN planned L not possible, taking R
+15:43:45.669  WARN path used up before the end, taking R
+15:43:48.399  WARN path used up before the end, taking R
+15:43:49.239  STATE UTURN
+15:43:52.209  WARN unexpected dead end while solving
+15:43:53.170  WARN path used up before the end, taking L
+15:43:54.280  STATE RECOVER
+15:43:54.280  LOST drifted off -> small sweeps
+15:43:55.809  FOUND line
+15:43:56.049  STATE UTURN
+15:44:00.160  WARN u-turn failed
+15:44:00.160  STATE RECOVER
+15:44:00.160  LOST -> full spin
+15:44:01.570  FOUND line
+15:44:02.770  WARN path used up before the end, taking R
+15:44:08.380  WARN path used up before the end, taking R
+15:44:10.690  WARN turn failed
+15:44:10.690  STATE RECOVER
+15:44:10.719  LOST -> full spin
+15:44:11.829  FOUND line
+15:44:12.400  WARN path used up before the end, taking L
+15:44:13.899  WARN path used up before the end, taking S
+15:44:14.200  STATE RECOVER
+15:44:14.200  LOST drifted off -> small sweeps
+15:44:15.790  FOUND line
+15:44:16.329  WARN path used up before the end, taking R
+15:44:17.350  STATE RECOVER
+15:44:17.350  LOST drifted off -> small sweeps
+15:44:21.280  FOUND line
+15:44:23.049  STATE RECOVER
+15:44:23.080  LOST drifted off -> small sweeps
+15:44:23.470  FOUND line
+15:44:23.980  STATE RECOVER
+15:44:23.980  LOST drifted off -> small sweeps
+15:44:25.239  FOUND line
+15:44:25.660  STATE RECOVER
+15:44:25.660  LOST drifted off -> small sweeps
+15:44:27.280  FOUND line
+15:44:27.519  STATE UTURN
+15:44:27.969  WARN unexpected corner while solving
+15:44:28.450  STATE RECOVER
+15:44:28.450  LOST drifted off -> small sweeps
+15:44:28.899  FOUND line
+15:44:29.260  STATE RECOVER
+15:44:29.260  LOST drifted off -> small sweeps
+15:44:30.970  FOUND line
+15:44:31.389  STATE RECOVER
+15:44:31.419  LOST drifted off -> small sweeps
+15:44:33.429  FOUND line
+15:44:34.000  WARN path used up before the end, taking L
+15:44:35.349  WARN path used up before the end, taking R
+15:44:37.119  WARN path used up before the end, taking R
+15:44:39.010  STATE RECOVER
+15:44:39.010  LOST drifted off -> small sweeps
+15:44:40.809  FOUND line
+15:44:41.409  STATE UTURN
+15:44:44.919  WARN unexpected dead end while solving
+15:44:45.430  STATE RECOVER
+15:44:45.430  LOST drifted off -> small sweeps
+15:44:45.580  FOUND line
+15:44:46.900  STATE RECOVER
+15:44:46.900  LOST drifted off -> small sweeps
+15:44:52.899  FOUND line
+15:44:53.320  STATE RECOVER
+15:44:53.320  LOST drifted off -> small sweeps
+15:44:55.060  FOUND line
+15:44:55.630  WARN path used up before the end, taking R
+15:44:57.039  WARN path used up before the end, taking S
+15:44:58.090  WARN path used up before the end, taking R
+15:45:00.159  WARN path used up before the end, taking S
+15:45:01.990  STATE RECOVER
+15:45:01.990  LOST drifted off -> small sweeps
+15:45:02.380  FOUND line
+15:45:03.430  WARN path used up before the end, taking R
+15:45:05.860  WARN path used up before the end, taking R
+15:45:08.350  WARN path used up before the end, taking R
+15:45:12.310  STATE RECOVER
+15:45:12.310  LOST drifted off -> small sweeps
+15:45:14.050  FOUND line
+15:45:14.860  WARN path used up before the end, taking R
+15:45:17.110  WARN path used up before the end, taking R
+15:45:19.390  WARN turn failed
+15:45:19.390  STATE RECOVER
+15:45:19.419  LOST -> full spin
+15:45:24.310  FOUND line
+15:45:24.880  WARN path used up before the end, taking L
+15:45:26.019  STATE UTURN
+15:45:28.150  WARN unexpected dead end while solving
+15:45:28.750  WARN path used up before the end, taking R
+15:45:30.970  STATE RECOVER
+15:45:30.999  LOST drifted off -> small sweeps
+15:45:32.650  FOUND line
+15:45:33.550  WARN path used up before the end, taking L
+15:45:34.930  WARN path used up before the end, taking L
+15:45:35.980  STATE UTURN
+15:45:36.371  WARN unexpected corner while solving
+15:45:37.480  WARN path used up before the end, taking R
+15:45:39.910  WARN path used up before the end, taking R
+15:45:42.190  WARN turn failed
+15:45:42.220  STATE RECOVER
+15:45:42.220  LOST -> full spin
+15:45:47.080  FOUND line
+15:45:48.190  WARN path used up before the end, taking L
+15:45:49.840  STATE RECOVER
+15:45:49.840  LOST drifted off -> small sweeps
+15:45:50.260  FOUND line
+15:45:50.770  STATE RECOVER
+15:45:50.770  LOST drifted off -> small sweeps
+15:45:52.060  FOUND line
+15:45:52.930  WARN path used up before the end, taking L
+15:45:54.220  STATE UTURN
+15:45:58.090  WARN unexpected dead end while solving
+15:45:58.540  STATE RECOVER
+15:45:58.571  LOST drifted off -> small sweeps
+15:46:00.430  FOUND line
+15:46:01.000  WARN path used up before the end, taking L
+15:46:02.620  WARN path used up before the end, taking R
+15:46:05.081  WARN path used up before the end, taking R
+15:46:07.390  WARN turn failed
+15:46:07.390  STATE RECOVER
+15:46:07.391  LOST -> full spin
+15:46:07.480  FOUND line
+15:46:08.530  WARN path used up before the end, taking S
+15:46:09.791  WARN path used up before the end, taking R
+15:46:11.710  STATE RECOVER
+15:46:11.710  LOST drifted off -> small sweeps
+15:46:17.650  FOUND line
+15:46:18.160  STATE RECOVER
+15:46:18.161  LOST drifted off -> small sweeps
+15:46:24.160  WARN search failed, retry 1
+15:46:24.730  WARN path used up before the end, taking L
+15:46:25.870  STATE RECOVER
+15:46:25.870  LOST drifted off -> small sweeps
+15:46:27.640  FOUND line
+15:46:28.120  STATE RECOVER
+15:46:28.150  LOST drifted off -> small sweeps
+15:46:30.040  FOUND line
+15:46:30.550  WARN path used up before the end, taking L
+15:46:31.810  WARN path used up before the end, taking R
+15:46:33.580  WARN path used up before the end, taking R
+15:46:35.890  WARN turn failed
+15:46:35.890  STATE RECOVER
+15:46:35.891  LOST -> full spin
+15:46:36.340  FOUND line
+15:46:37.120  WARN path used up before the end, taking L
+15:46:38.500  WARN path used up before the end, taking L
+15:46:40.030  WARN path used up before the end, taking S
+15:46:40.570  WARN path used up before the end, taking S
+15:46:40.720  STATE RECOVER
+15:46:40.720  LOST drifted off -> small sweeps
+15:46:42.460  FOUND line
+15:46:42.760  STATE RECOVER
+15:46:42.761  LOST drifted off -> small sweeps
+15:46:44.440  FOUND line
+15:46:44.740  STATE RECOVER
+15:46:44.770  LOST drifted off -> small sweeps
+15:46:45.130  FOUND line
+15:46:45.370  STATE RECOVER
+15:46:45.370  LOST drifted off -> small sweeps
+15:46:45.671  FOUND line
+15:46:45.910  STATE UTURN
+15:46:47.590  WARN unexpected dead end while solving
+15:46:48.880  STATE RECOVER
+15:46:48.910  LOST drifted off -> small sweeps
+15:46:50.681  FOUND line
+15:46:51.190  WARN path used up before the end, taking R
+15:46:54.191  WARN path used up before the end, taking R
+15:46:56.470  STATE RECOVER
+15:46:56.470  LOST drifted off -> small sweeps
+15:47:00.130  FOUND line
+15:47:00.640  WARN path used up before the end, taking L
+15:47:01.510  STATE RECOVER
+15:47:01.510  LOST drifted off -> small sweeps
+15:47:02.860  FOUND line
+15:47:03.491  WARN path used up before the end, taking R
+15:47:04.871  WARN path used up before the end, taking L
+15:47:05.890  WARN path used up before the end, taking R
+15:47:08.171  WARN turn failed
+15:47:08.200  STATE RECOVER
+15:47:08.200  LOST -> full spin
+15:47:10.060  FOUND line
+15:47:11.560  STATE RECOVER
+15:47:11.590  LOST drifted off -> small sweeps
+15:47:13.510  FOUND line
+15:47:13.900  STATE RECOVER
+15:47:13.960  LOST drifted off -> small sweeps
+15:47:14.320  FOUND line
+15:47:14.830  WARN path used up before the end, taking S
+15:47:19.750  WARN path used up before the end, taking L
+15:47:21.100  WARN path used up before the end, taking S
+15:47:21.640  STATE RECOVER
+15:47:21.641  LOST drifted off -> small sweeps
+15:47:27.640  WARN search failed, retry 1
+15:47:30.791  FOUND line
+15:47:31.330  WARN path used up before the end, taking L
+15:47:32.620  WARN path used up before the end, taking R
+15:47:35.080  WARN path used up before the end, taking R
+15:47:37.511  WARN path used up before the end, taking R
+15:47:39.791  WARN turn failed
+15:47:39.820  STATE RECOVER
+15:47:39.820  LOST -> full spin
+15:47:41.110  FOUND line
+15:47:41.650  WARN path used up before the end, taking L
+15:47:42.790  STATE RECOVER
+15:47:42.791  LOST drifted off -> small sweeps
+15:47:43.030  FOUND line
